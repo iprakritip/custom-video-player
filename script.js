@@ -26,9 +26,14 @@ function updateButton() {
     toggle.innerHTML = icon
 }
 
-function skip(){
-    
+function skip(){  
     video.currentTime += parseFloat(this.dataset.skip);
+}
+
+function hnadleRangeUpdate(){
+    video[this.name]=this.value
+    // console.log(this.value);
+    // console.log(this.name);
 }
 
 // Hook up event listeners
@@ -42,3 +47,7 @@ toggle.addEventListener('click', togglePlay)
 skipButtons.forEach(button=>[
     button.addEventListener('click', skip)
 ])
+ranges.forEach(range=>{
+    range.addEventListener("change", hnadleRangeUpdate)
+    range.addEventListener("mousemove", hnadleRangeUpdate)
+})
